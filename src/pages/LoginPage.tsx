@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import apiClient from '../api';
+import { useAuth } from '../context/AuthContext';
+import SimpleHeader from '../components/SimpleHeader';
 
 interface ErrorResponse {
   detail?: string;
@@ -9,12 +11,13 @@ interface ErrorResponse {
 }
 
 const LoginPage: React.FC = () => {
-  // ... (логика хуков остается без изменений) ...
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-  
+  const { fetchUser } = useAuth();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -25,10 +28,9 @@ const LoginPage: React.FC = () => {
 
     try {
       await apiClient.post('/users/login', formData, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       });
+      await fetchUser();
       navigate('/');
     } catch (err) {
       const axiosError = err as AxiosError<ErrorResponse>;
@@ -38,25 +40,36 @@ const LoginPage: React.FC = () => {
     }
   };
 
-
   return (
-    <div className="form-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-error">{error}</div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <button type="submit">Log In</button>
-      </form>
-       <p style={{ textAlign: 'center', marginTop: '1rem' }}>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
+    <div>
+      <SimpleHeader />
+      <div className="form-container">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-error">{error}</div>
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input id="password" type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} required />
+          </div>
+          <div className="form-show-password">
+            <input
+              type="checkbox"
+              id="show-password"
+              checked={showPassword}
+              onChange={() => setShowPassword(!showPassword)}
+            />
+            <label htmlFor="show-password">Show Password</label>
+          </div>
+          <button type="submit">Log In</button>
+        </form>
+        <p style={{ textAlign: 'center', marginTop: '1rem' }}>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
+      </div>
     </div>
   );
 };
