@@ -3,6 +3,7 @@ import { AuthProvider } from './context/AuthContext';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import Footer from './components/Footer';
 
 const MyProfilePage = () => <div className="page-container">My Profile Page</div>;
 const MyMoviesPage = () => <div className="page-container">My Movies Page</div>;
@@ -11,14 +12,19 @@ const EditProfilePage = () => <div className="page-container">Edit Profile Page<
 function App() {
   return (
     <AuthProvider>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/profile" element={<MyProfilePage />} />
-        <Route path="/my-movies" element={<MyMoviesPage />} />
-        <Route path="/profile/edit" element={<EditProfilePage />} />
-      </Routes>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <main style={{ flex: '1' }}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/profile" element={<MyProfilePage />} />
+            <Route path="/my-movies" element={<MyMoviesPage />} />
+            <Route path="/profile/edit" element={<EditProfilePage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </AuthProvider>
   );
 }
