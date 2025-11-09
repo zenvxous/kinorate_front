@@ -359,3 +359,11 @@ button:hover {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.form-success {
+  color: #4CAF50;
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  min-height: 1.2em;
+}
