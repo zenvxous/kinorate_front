@@ -54,6 +54,7 @@ const MoviePage: React.FC = () => {
   useEffect(() => {
     const fetchMovieData = async () => {
       if (!movieId) return;
+      setIsLoading(true); 
       try {
         const movieResponse = await apiClient.get<LocalMovie>(`/movies/${movieId}`);
         const movieData = movieResponse.data;

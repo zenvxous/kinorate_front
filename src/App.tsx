@@ -8,7 +8,7 @@ import MyProfilePage from './pages/MyProfilePage';
 import MyMoviesPage from './pages/MyMoviesPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
-import MoviePage from './pages/MoviePage';
+import MoviePageWrapper from './pages/MoviePageWrapper'; 
 
 function App() {
   return (
@@ -48,7 +48,7 @@ function App() {
               path="/movies/:movieId"
               element={
                 <ProtectedRoute>
-                  <MoviePage />
+                  <MoviePageWrapper />
                 </ProtectedRoute>
               }
             />
