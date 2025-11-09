@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import apiClient from '../api';
 import Header from '../components/Header';
 import RatingInput from '../components/RatingInput';
+import MoviePageSkeleton from '../components/MoviePageSkeleton';
 
 interface LocalMovie {
   id: string;
@@ -110,9 +111,32 @@ const MoviePage: React.FC = () => {
     }
   };
 
-  if (isLoading) return <div className="page-container">Loading movie...</div>;
-  if (error) return <div className="page-container" style={{ color: 'var(--error-color)' }}>{error}</div>;
-  if (!localMovie) return <div className="page-container">Movie not found.</div>;
+  if (isLoading) {
+    return (
+      <>
+        <Header />
+        <MoviePageSkeleton />
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <Header />
+        <div className="page-container" style={{ color: 'var(--error-color)' }}>{error}</div>
+      </>
+    );
+  }
+  
+  if (!localMovie) {
+    return (
+      <>
+        <Header />
+        <div className="page-container">Movie not found.</div>
+      </>
+    );
+  }
 
   const posterPath = localMovie.poster_path.startsWith('/') 
     ? localMovie.poster_path.substring(1) 
@@ -163,6 +187,7 @@ const MoviePage: React.FC = () => {
               />
             </div>
             {success && <div className="form-success">{success}</div>}
+            {error && <div className="form-error">{error}</div>}
             <button onClick={handleSave} className="save-button">Save</button>
           </div>
         </div>

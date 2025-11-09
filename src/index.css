@@ -621,3 +621,67 @@ button:hover {
   font-weight: bold;
   font-size: 1.1rem;
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, 
+    var(--surface-color) 25%, 
+    #3a3a3a 50%, 
+    var(--surface-color) 75%
+  );
+  background-size: 200% 100%;
+  border-radius: 6px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeleton-poster {
+  width: 250px;
+  height: 375px;
+}
+
+.skeleton-title {
+  height: 2.5rem;
+  width: 70%;
+  margin-bottom: 1.5rem;
+}
+
+.skeleton-text {
+  height: 1rem;
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-subtitle {
+  height: 1.5rem;
+  width: 30%;
+  margin-bottom: 2rem;
+}
+
+.skeleton-label {
+  height: 1rem;
+  width: 100px;
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-rating {
+  height: 32px;
+  width: 100%;
+}
+
+.skeleton-input {
+  height: 48px;
+  width: 200px;
+}
+
+.skeleton-textarea {
+  height: 140px;
+  width: 100%;
+}
