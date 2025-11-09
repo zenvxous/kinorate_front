@@ -4,10 +4,10 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import EditProfilePage from './pages/EditProfilePage';
+import MyProfilePage from './pages/MyProfilePage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
 
-const MyProfilePage = () => <div className="page-container">My Profile Page</div>;
 const MyMoviesPage = () => <div className="page-container">My Movies Page</div>;
 
 function App() {
