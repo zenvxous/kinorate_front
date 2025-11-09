@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import MovieSearch from './MovieSearch';
 import AuthButtons from './AuthButtons';
 import ProfileDropdown from './ProfileDropdown';
+import Logo from './Logo';
 
 const Header: React.FC = () => {
   const { user, isLoading } = useAuth();
@@ -18,7 +19,7 @@ const Header: React.FC = () => {
   return (
     <header className="app-header">
       <Link to="/">
-        <h1>Kinorate</h1>
+        <Logo />
       </Link>
       <nav>
         <MovieSearch />
