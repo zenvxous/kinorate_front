@@ -8,6 +8,7 @@ import MyProfilePage from './pages/MyProfilePage';
 import MyMoviesPage from './pages/MyMoviesPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
+import MoviePage from './pages/MoviePage';
 
 function App() {
   return (
@@ -40,6 +41,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <MyMoviesPage />
+                </ProtectedRoute>
+              }
+            />
+             <Route
+              path="/movies/:movieId"
+              element={
+                <ProtectedRoute>
+                  <MoviePage />
                 </ProtectedRoute>
               }
             />
