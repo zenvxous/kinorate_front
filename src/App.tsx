@@ -5,10 +5,9 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import EditProfilePage from './pages/EditProfilePage';
 import MyProfilePage from './pages/MyProfilePage';
+import MyMoviesPage from './pages/MyMoviesPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
-
-const MyMoviesPage = () => <div className="page-container">My Movies Page</div>;
 
 function App() {
   return (
