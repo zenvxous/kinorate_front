@@ -9,6 +9,7 @@ import MyMoviesPage from './pages/MyMoviesPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
 import MoviePageWrapper from './pages/MoviePageWrapper'; 
+import SearchResultsPage from './pages/SearchResultsPage';
 
 function App() {
   return (
@@ -49,6 +50,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <MoviePageWrapper />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/search"
+              element={
+                <ProtectedRoute>
+                  <SearchResultsPage />
                 </ProtectedRoute>
               }
             />
