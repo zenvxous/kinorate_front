@@ -12,7 +12,7 @@ const EditProfilePage = () => <div className="page-container">Edit Profile Page<
 function App() {
   return (
     <AuthProvider>
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <div className="app-container">
         <main style={{ flex: '1' }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
