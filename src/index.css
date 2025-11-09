@@ -733,13 +733,16 @@ button:hover {
   margin-top: 5px;
   z-index: 10;
 }
+
 .search-results-list li.preview-item {
   cursor: default;
 }
+
 .see-all-container {
   padding: 0.5rem;
   border-top: 1px solid var(--border-color);
 }
+
 .see-all-button {
   width: 100%;
   text-align: center;
@@ -748,6 +751,7 @@ button:hover {
 .search-page {
   padding-top: 1rem;
 }
+
 .search-results-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -763,21 +767,26 @@ button:hover {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .search-result-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
+
 .search-result-item.navigating {
   cursor: wait;
 }
+
 .item-poster {
   position: relative;
 }
+
 .item-poster img {
   width: 100%;
   height: auto;
   display: block;
 }
+
 .item-loader {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -786,9 +795,11 @@ button:hover {
   align-items: center;
   justify-content: center;
 }
+
 .item-info {
   padding: 1rem;
 }
+
 .item-title {
   font-weight: 500;
   margin: 0 0 0.25rem 0;
@@ -796,6 +807,7 @@ button:hover {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .item-year {
   color: var(--secondary-text-color);
   font-size: 0.9rem;
@@ -809,10 +821,21 @@ button:hover {
   gap: 1.5rem;
   padding: 1rem 0;
 }
+
 .pagination-container span {
   color: var(--secondary-text-color);
 }
+
 .pagination-container button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.default-poster-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 2 / 3;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
 }

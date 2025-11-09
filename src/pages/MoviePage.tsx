@@ -4,6 +4,7 @@ import apiClient from '../api';
 import Header from '../components/Header';
 import RatingInput from '../components/RatingInput';
 import MoviePageSkeleton from '../components/MoviePageSkeleton';
+import DefaultPoster from '../components/DefaultPoster'; 
 
 interface LocalMovie {
   id: string;
@@ -149,7 +150,11 @@ const MoviePage: React.FC = () => {
       <div className="page-container movie-page">
         <div className="movie-header">
           <div className="movie-poster">
-            <img src={`http://localhost:8000/tmdb/poster/${posterPath}`} alt={localMovie.title} />
+            {localMovie.poster_path ? (
+              <img src={`http://localhost:8000/tmdb/poster/${posterPath}`} alt={localMovie.title} />
+            ) : (
+              <DefaultPoster />
+            )}
           </div>
           <div className="movie-info">
             <h1>{localMovie.title}</h1>

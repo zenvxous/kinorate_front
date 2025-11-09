@@ -1,4 +1,5 @@
 import React from 'react';
+import DefaultPoster from './DefaultPoster';
 
 interface TmdbMovie {
   id: number;
@@ -14,16 +15,16 @@ interface SearchResultItemProps {
 }
 
 const SearchResultItem: React.FC<SearchResultItemProps> = ({ movie, onClick, isNavigating }) => {
-  const posterPath = movie.poster_path
-    ? `http://localhost:8000/tmdb/poster/${movie.poster_path.substring(1)}`
-    : 'https://via.placeholder.com/200x300.png?text=No+Image';
-
   const year = movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A';
 
   return (
     <div className={`search-result-item ${isNavigating ? 'navigating' : ''}`} onClick={onClick}>
       <div className="item-poster">
-        <img src={posterPath} alt={movie.title} />
+        {movie.poster_path ? (
+          <img src={`http://localhost:8000/tmdb/poster/${movie.poster_path.substring(1)}`} alt={movie.title} />
+        ) : (
+          <DefaultPoster />
+        )}
         {isNavigating && <div className="item-loader"><span className="loader" /></div>}
       </div>
       <div className="item-info">
